@@ -28,6 +28,7 @@ class HomePage extends StatelessWidget {
                         alignment: AlignmentDirectional.center,
                         children: [
                           const Divider(),
+                          const SizedBox(height: 40),
                           paddWidget(
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,7 +57,11 @@ class HomePage extends StatelessWidget {
                                               .watch<NewsProvider>()
                                               .headlineNews[0],
                                         )
-                                      : Placeholder(),
+                                      : NewsCard1(
+                                          news: context
+                                              .watch<NewsProvider>()
+                                              .headlineNews[0],
+                                        ),
                                 ),
                                 (size.width > 979)
                                     ? const SizedBox(width: 60)
@@ -124,7 +129,7 @@ class HomePage extends StatelessWidget {
                               SizedBox(
                                 height:
                                     (MediaQuery.of(context).size.width > 979)
-                                        ? 600
+                                        ? 800
                                         : 1200,
                                 child: GridView.builder(
                                   primary: false,
